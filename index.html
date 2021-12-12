@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <style>
+        body{
+            background: grey;
+            
+        }
+        table{
+            
+            border-collapse: collapse;
+            margin: 150px auto;
+            
+        }
+        table th, table td{
+            border: 2px solid ;
+            padding: 20px;
+            
+            text-align: center;
+            color: black;
+        }
+        table tr:nth-child(2n){
+            background-color: rgb(151, 252, 230);
+        }
+        table tr:hover{
+            background-color: rgb(157, 196, 197);
+        }
+        table td{
+            text-align: center;
+        }
+        div{ top:0%;
+            position: fixed;
+        }
+           button{
+               margin: 10px;
+               padding: 10px;
+               border-radius: 10px;
+               color: rgb(2, 1, 12);
+           } 
+          
+          h1{
+              text-align: center;
+          }
+
+        
+        
+    </style>
+</head>
+<body>
+    <div><h1>API Details</h1>
+        <button id="b" onclick="fn()">Get Data </button>
+    </div>
+    
+   
+    
+    <table>
+        <tr>
+            <th>postLink</th>
+            <th>subreddit</th>
+            <th>title</th>
+            <th>url</th>
+            <th>nsfw</th>
+            <th>spoiler</th>
+            <th>author</th>
+            <th>usp</th>
+            <th>preview</th>
+        </tr>
+        <tr>
+            <td><p id="post">Postlink</p></td>
+            <td><p id="sub">subreddit</p></td>
+            <td><p id="title">title</p></td>
+            <td><p id="url">url</p></td>
+            <td><p id="ns">nsfw</p></td>
+            <td><p id="sp">spoiler</p></td>
+            <td><p id="author">author</p></td>
+            <td><p id="usp">ups</p></td>
+            <td><img src="" id="pre" alt=""></td>
+        </tr>
+    </table>
+    
+    <div>
+
+    </div>
+    <script >
+
+        async function fn() {
+            var res= await fetch('https://meme-api.herokuapp.com/gimme');
+            var data= await res.json();
+            document.getElementById('post').innerText=data.postLink;
+            document.getElementById('sub').innerText=data.subreddit;
+            document.getElementById('title').innerText=data.title;
+            document.getElementById('url').innerText=data.url;
+            document.getElementById('ns').innerText=data.nsfw;
+            document.getElementById('sp').innerText=data.spoiler;
+            document.getElementById('author').innerText=data.author;
+            document.getElementById('usp').innerText=data.ups;
+            document.getElementById('pre').src=data.preview[0];
+            
+
+        }
+
+    </script>
+</body>
+</html>
